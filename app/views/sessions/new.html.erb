@@ -1,0 +1,19 @@
+<h1 align="center">Log in</h>
+<%= form_for(:session, :html => {class:"form-horizontal", role:"form"}, url: login_path) do |f| %>
+    
+    <p>
+    <%= f.label :email %> 
+    <%= f.email_field :email, placeholder: "Enter email"%>
+    </p>
+
+    <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Enter password" %>
+    </p>
+    
+    <p>
+    <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
+    </p>
+    
+<% end %>
+<%= link_to "Articles Listing", articles_path %>
