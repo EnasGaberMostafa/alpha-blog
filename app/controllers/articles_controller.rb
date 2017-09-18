@@ -14,9 +14,10 @@ class ArticlesController < ApplicationController
     end
 
     def create
+        debugger
         # render plain: params[:article].inspect
-        @article = Article.new(articles_params)
-         
+        @article = Article.new(article_params)
+        @article.user = User.first
         if @article.save
             flash[:notice] = "Article was successfully created" # showed in appplication view
             redirect_to article_path(@article)   #show
@@ -44,7 +45,7 @@ class ArticlesController < ApplicationController
     end
 
     private
-    def articles_params
+    def article_params
         params.require(:article).permit(:title, :description)
     end
     def set_article
