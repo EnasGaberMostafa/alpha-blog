@@ -2,4 +2,10 @@
 <p>
 <%= link_to "create new artile", new_article_path %>
 </p>
+<div class="center">
+    <%= will_paginate %>
+</div>
 <%= render 'article', obj: @articles%>
+<div align="center">
+    <%= will_paginate %>
+</div>
