@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        debugger
         # render plain: params[:article].inspect
         @article = Article.new(article_params)
         @article.user = current_user
@@ -33,7 +32,7 @@ class ArticlesController < ApplicationController
     end
 
     def update 
-        if @article.update(articles_params)
+        if @article.update(article_params)
             flash[:notice] = "Article was successfully updated" # showed in appplication view
             redirect_to article_path(@article)   #show
         else # validations failed
@@ -48,8 +47,8 @@ class ArticlesController < ApplicationController
     end
 
     private
-    def articles_params
-        params.require(:article).permit(:title, :description)
+    def article_params
+        params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     def set_article
