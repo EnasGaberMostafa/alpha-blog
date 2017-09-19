@@ -1,0 +1,28 @@
+<h1 align="center"> Create new category</h1>
+<% if @category.errors.any? %>
+    <h2 class="panel-title">
+        <%= pluralize(@category.errors.count, "error")%> 
+            prohibited this article from being saved: 
+    </h2>
+    <div class="panel-body">
+        <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+                <li> <%= msg %> </li>
+            <% end %> 
+        </ul>
+    </div>
+<% end %> 
+
+<%= form_for( @category, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <p>
+    <%= f.label :name %> <br/>
+    <%= f.text_field :name , class: "form-control", placeholder: "Category name"%>
+    </p>
+
+    
+    <p>
+    <%= f.submit class: "btn btn-primary btn-lg" %>
+    </p>
+    
+<% end %>
+<%= link_to "Articles Listing", articles_path %>
